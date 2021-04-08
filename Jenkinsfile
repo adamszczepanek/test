@@ -22,7 +22,7 @@ pipeline {
         }
         stage("Docker Login") {
             steps {
-                sh "docker login --username adamszczepanek --password ${DOCKER_PWD}"
+                sh "docker login --username adamszczepanek --password ${params.DOCKER_PWD}"
             }
         }   
         stage("Docker Cleanup") {
