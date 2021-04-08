@@ -20,12 +20,16 @@ pipeline {
                 sh "docker build -t ${REPONAME}:1 ."
             }
         }
-        stage("Docker Tag & Push") {
+        stage("Docker Login") {
             steps {
                 sh "docker login --username adamszczepanek --password ${DOCKER_PWD}"
-                sh "docker push ${REPONAME}:1"
             }
-        }     
+        }   
+        stage("Docker Cleanup") {
+            steps {
+                sh "docker rmi ${REPONAME}:1"
+            }
+        }
         
     }
 }
