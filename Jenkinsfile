@@ -16,20 +16,9 @@ pipeline {
     stages {
         stage("Build image") {
             steps {
-                sh "docker build -t ${REPONAME}:${NODE_VERSION} --build-arg NODE_VER=${NODE_VERSION} ."
+                sh "ls"
             }
         }        
-        stage("Docker Tag & Push") {
-            steps {
-                withDockerRegistry([url: "", credentialsId: "valueadd-robot-dockerhub"]) {
-                    sh "docker push ${REPONAME}:${NODE_VERSION}"
-                }
-            }
-        }        
-        stage("Docker cleanup") {
-            steps {
-                sh "docker rmi ${REPONAME}:${NODE_VERSION}"
-            }
-        }
+        
     }
 }
