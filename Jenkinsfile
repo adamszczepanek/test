@@ -17,21 +17,19 @@ pipeline {
     stages {
         stage("Build image") {
             steps {
-                //sh "docker build -t ${REPONAME}:1 ."
-                sh "docker rmi ${REPONAME}:1"
-                sh "docker images"
+                sh "docker build -t ${REPONAME}:1 ."
             }
         }
-        //stage("Docker Login") {
-        //    steps {
-        //        sh "docker login --username adamszczepanek --password ${params.DOCKER_PWD}"
-        //    }
-        //}   
-        //stage("Docker Cleanup") {
-        //    steps {
-        //        sh "docker rmi ${REPONAME}:1"
-        //   }
-        //}
+        stage("Docker Login") {
+            steps {
+                sh "docker login --username adamszczepanek --password ${params.DOCKER_PWD}"
+            }
+        }   
+        stage("Docker Cleanup") {
+            steps {
+                sh "docker rmi ${REPONAME}:1"
+           }
+        }
         
     }
 }
