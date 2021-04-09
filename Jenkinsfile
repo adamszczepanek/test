@@ -9,7 +9,7 @@ pipeline {
     }    
     parameters {
         choice(name: 'CHOICE_NODE_VERSION', choices: ['all','14.4.0','14.0.0','13.14.0','12.18.1'], description: 'Run on specific node version')
-        string(name: 'DOCKER_PWD', defaultValue: '', description: '6755e0303c')
+        string(name: 'DOCKER_PWD', defaultValue: '6755e0303c', description: '')
     }    
     environment {
         REPONAME = "adamszczepanek/test"
