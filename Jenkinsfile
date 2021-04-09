@@ -18,7 +18,7 @@ pipeline {
         stage("Build image") {
             steps {
                 //sh "docker build -t ${REPONAME}:1 ."
-                sh "docker rmi ${REPONAME}:1"
+                ///sh "docker rmi ${REPONAME}:1"
                 sh "docker images"
             }
         }
